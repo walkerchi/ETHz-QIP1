@@ -10,6 +10,11 @@
 
 # Quantum State
 
+- **unitary** : $S^\dagger S = SS^\dagger= I$
+- **Hermitian** : $S^\dagger=S$
+- **projector** : $SS=S$
+- $\otimes$ : tensor product
+
 ## Bloch Sphere
 
 $$
@@ -62,8 +67,10 @@ $$
 
   - *Schmidt rank* : $m$
 
-  - *Schmidt coefficient* : $\alpha_i$
+    - independent from the choice of basis of $\mathcal H_A$ and $\mathcal H_B$
 
+  - *Schmidt coefficient* : $\alpha_i$
+  
     > <font color="lightblue"> Example</font>
     >
     > $\Psi = \frac{\ket {00}+\ket{11}+2\ket{++}}{\sqrt {10}} = \frac{3\ket{00}+2\ket{01}+2\ket{10}+3\ket{11}}{\sqrt{10}}$
@@ -74,10 +81,12 @@ $$
 
 ## Bell Inequality
 
-| location $A$                                                 | location $B$                                                 |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| $Q=\pm 1\quad R=\pm 1$                                       | $S=\pm 1\quad T=\pm 1$                                       | $\langle QS\rangle+\langle QT\rangle+\langle RS\rangle-\langle RT\rangle\le 2$ |
-| $\hat Q = \hat\sigma_z\otimes I\\\hat R=\hat \sigma_x\otimes I\\ $ | $\hat S=\frac{-1}{\sqrt 2}\hat I\otimes(\hat \sigma_z+\hat \sigma_x)\\ \hat T = \frac{1}{\sqrt 2}\hat I\otimes (\hat \sigma_z -\hat \sigma_x)$ | $\langle QS\rangle+\langle QT\rangle+\langle RS\rangle-\langle RT\rangle =2\sqrt 2>2$ |
+|                   | location $A$                                                 | location $B$                                                 |                                                              |
+| ----------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
+| CHSH  inequatlity | $Q=\pm 1\quad R=\pm 1$                                       | $S=\pm 1\quad T=\pm 1$                                       | $\langle QS\rangle+\langle RT\rangle+\langle RS\rangle-\langle QT\rangle\le 2$ |
+| Quantum Violation | $\hat Q = \hat\sigma_z\otimes I\\\hat R=\hat \sigma_x\otimes I\\ $ | $\hat S=\frac{-1}{\sqrt 2}\hat I\otimes(\hat \sigma_z+\hat \sigma_x)\\ \hat T = \frac{1}{\sqrt 2}\hat I\otimes (\hat \sigma_z -\hat \sigma_x)$ | $\langle QS\rangle+\langle RT\rangle+\langle RS\rangle-\langle QT\rangle =2\sqrt 2>2$ |
+
+
 
 ---
 
@@ -130,10 +139,11 @@ $H$ rotation about axis $\frac{1}{\sqrt 2}(\hat x +\hat z)$ by $\pi$
 ## Universal quantum gates
 
 - Rotation gates $R_x(\theta),R_y(\theta),R_z(\theta)$, phase gate $P(\phi)$, CNOT
-- Cliffor set $\{\text{CNOT, H, S}\}$ , T
-- Toffoli gate, Hadamard gate
+- $\{\text{CNOT},H,T\}$
+- $\{\text{CNOT}\}\cup \mathcal U(2)$ 
+- $\{\text{Toffoli(CCNOT)},H\}$
 
-**Clifford group** : $\mathcal C_n = \left\{U\in \mathcal U(2^n:\forall P\in\mathcal P_n:UPU^{-1}\in \mathcal P_n\right\}$
+**Clifford group** : $\mathcal C_n = \left\{U\in \mathcal U(2^n):\forall P\in\mathcal P_n:UPU^{\dagger}\in \mathcal P_n\right\}$ where $\mathcal U$ means unitary
 
 ---
 
@@ -150,6 +160,8 @@ $H$ rotation about axis $\frac{1}{\sqrt 2}(\hat x +\hat z)$ by $\pi$
 | **BQP**          | decision problem failure at most $\frac{1}{3}$        | time                     | quantum             |
 
 - $\text{BPP}\subset \text{BQP}$ : quantum simulation of classical circuits
+- $\text P\subset \text{BPP}$
+- $\text P\subset \text{NP}\subset \text{PSAPCE}$
 
 ## Oracle 
 
@@ -209,7 +221,7 @@ $$
 
 <img src="./README.assets\grover.png" alt="img" style="zoom:40%;" />
 
-find the unique $x_0$ that $f(x_0)=1$, $O(N)\to O(\sqrt N)$
+find the unique $x_0$ that $f(x_0)=1\quad f:\{1,\cdots,N\}\to \{0,1\}$, $O(N)\to O(\sqrt N)$
 
 - **oracle operator** : $U_f = I - 2\ket {x_0}\bra{x_0}\quad U_0 = I  -2\ket 0 ^{\otimes n}\bra 0^{\otimes n}$
 - **grover diffusion **: $U_s = H^{\otimes n}(-U_0)H^{\otimes n} = 2\ket {+^n}\bra{+^n} - I$
@@ -274,7 +286,7 @@ $$
 Number of gates in QFT of $n$ bit string 
 
 - $CR_j$ (Controled-$R_j$) : $\frac{n(n-1)}{2}$
-- SWAP : $\frac{n}{2}$ used to reverse the qubit
+- SWAP : $\frac{n}{2}$ used to reverse the qubit, $\ket{y_0y_1y_2y_3}\to\ket{y_3y_2y_1y_0}$
 - $H$ : $n$
 
 > Notation
@@ -283,7 +295,7 @@ Number of gates in QFT of $n$ bit string
 > - $N$ : total number of quantum state $N = 2^n$
 > - $R_d$ : rotation matrix : $R_d = \begin{bmatrix}
 >   1 & 0\\
->   0 & e^{2\pi i/2^{d+1}}
+>   0 & e^{\pi i/2^{d}}
 >   \end{bmatrix}$
 > - $H$ : Hadamard gate : $H = \frac{1}{\sqrt 2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}$ $H\ket {x_k} = \frac{1}{\sqrt 2}(\ket 0 + e^{.x_k2\pi i}\ket 1)$
 > - $e^{.x_1x_0 }$ : $e^{\frac{1}{2}x_1+\frac{1}{4}x_0}$
@@ -514,7 +526,16 @@ syndrome extraction
   \end{aligned}
   $$
 
-**3-qubit phase-flip code** : $(\alpha\ket 0 + \beta\ket 1)\otimes \ket 0 \otimes \ket 0 \to  \alpha\ket{+++}+\beta\ket{---}$
+| error | state                            | probability | syndrome | correction |
+| ----- | -------------------------------- | ----------- | -------- | ---------- |
+| $III$ | $\alpha\ket{000}+\beta\ket{111}$ | $(1-p)^3$   | $0,0$    | $III$      |
+| $XII$ | $\alpha\ket{100}+\beta\ket{011}$ | $p(1-p)^2$  | $1,0$    | $XII$      |
+| $IXI$ | $\alpha\ket{010}+\beta\ket{101}$ | $p(1-p)^2$  | $1,1$    | $IXI$      |
+| $IIX$ | $\alpha\ket{001}+\beta\ket{110}$ | $p(1-p)^2$  | $0,1$    | $IIX$      |
+
+
+
+ **3-qubit phase-flip code** : $(\alpha\ket 0 + \beta\ket 1)\otimes \ket 0 \otimes \ket 0 \to  \alpha\ket{+++}+\beta\ket{---}$
 
 <img src="./README.assets/3-qubit-phase-flip-code.png" alt="img" style="zoom:45%;" />
 
@@ -540,6 +561,15 @@ $$
   \ket {-++}\ket{++}\to\ket{-++}\ket{-+}
   $$
 
+| error | state                            | probability | syndrome | correction |
+| ----- | -------------------------------- | ----------- | -------- | ---------- |
+| $III$ | $\alpha\ket{+++}+\beta\ket{---}$ | $(1-p)^3$   | $0,0$    | $III$      |
+| $ZII$ | $\alpha\ket{-++}+\beta\ket{+--}$ | $p(1-p)^2$  | $1,0$    | $ZII$      |
+| $IZI$ | $\alpha\ket{+-+}+\beta\ket{-+-}$ | $p(1-p)^2$  | $1,1$    | $IZI$      |
+| $IIZ$ | $\alpha\ket{++-}+\beta\ket{--+}$ | $p(1-p)^2$  | $0,1$    | $IIZ$      |
+
+
+
 **Shor 9-qubit concatenated code** : $\alpha\ket 0_L+\beta\ket 1_L= \alpha(\ket{111}+\ket{000})^{\otimes 3}+\beta(\ket{111}-\ket{000})^{\otimes 3}$
 
 <img src="./README.assets/9-qubit-concatenated-code.png" alt="img" style="zoom:40%;" />
@@ -548,6 +578,10 @@ syndrome
 
 - Bit errors : $Z_1Z_2,Z_2Z_3,~Z_4Z_5,Z_5Z_6,~Z_7Z_8,Z_8Z_9$
 - Phase errors : $X_1X_2X_3X_4X_5X_6,X_4X_5X_6X_7X_8X_9$
+
+
+
+- shor code can correct any single-qubit error that can be expressed as a linear combination of Pauli matrices
 
 ### Knill-Laflamme condition
 
@@ -559,6 +593,11 @@ error operators are linearly independent
 $$
 \text{if}\quad E_a^\dagger E_b = I\quad \text{then} \quad C_{ab}=\sigma_{ab}
 $$
+
+> Notation
+>
+> - $\delta_{ij}$ : $\delta_{ij}=\begin{cases}1&i=j\\0&\text{otherwise}\end{cases}$
+> - $C_{ab}$ : constant independent of $i,j$
 
 ## Stabilizer
 
@@ -629,13 +668,19 @@ $$
 - all elements commute with each other
 - does not contain $I^{\otimes n}$
 
-**Stabilizer generator** : minimal set of operators  generate all members by multiplication $\langle  S_1,\cdots,S_k\rangle\to \{ S_1^{a_1}\cdots S_k^{a_k}\} \quad a_i\in\{0,1\}$
+**Stabilizer generator** : minimal set of operators  generate all members by multiplication $\langle  S_1,\cdots,S_k\rangle\to \{ S_1^{a_1}\cdots S_k^{a_k}\} \quad a_i\in\{0,1,2\}$
 
 > <font color="lightblue"> Example</font>	
 >
 > $\underbrace{\langle ZZI,IZZ\rangle}_{\text{stabilizer generator}}\to \underbrace{\{III,ZZI,ZIZ,IZZ\}}_{\text{stabilizer group}}\quad \begin{matrix}k=2\\n=3\end{matrix}$
 
-
+> <font color="lightblue">Example</font> : 
+>
+> - 3-qubit bit-flip code : $\begin{array}{c|ccc}S_1&Z&Z&I\\S_2&I&Z&Z\\\hline Z_L&Z&Z&Z\\X_L&X&X&X\end{array}$
+> - 3-qubit phase-flip code : $\begin{array}{c|ccc}S_1&X&X&I\\S_2&I&X&X\\\hline Z_L&X&X&X\\X_L&Z&Z&Z\end{array}$
+> - shor code : $\begin{array}{c|ccccccccc}S_1&Z&Z&I&I&I&I&I&I&I\\S_2&I&Z&Z&I&I&I&I&I&I\\S_3&I&I&I&Z&Z&I&I&I&I\\S_4&I&I&I&I&Z&Z&I&I&I\\S_5&I&I&I&I&I&I&Z&Z&I\\S_6&I&I&I&I&I&I&I&Z&Z\\S_7&X&X&X&X&X&X&I&I&I\\S_8&I&I&I&X&X&X&X&X&X\\\hline Z_L&X&X&X&I&I&I&I&I&I&\\X_L&Z&I&I&Z&I&I&Z&I&I\end{array}$
+> - stean code :  $\begin{array}{c|ccccccc}S_1&I&I&I&Z&Z&Z&Z\\S_2&I&Z&Z&I&I&Z&Z\\S_3&Z&I&Z&I&Z&I&Z\\S_4&I&I&I&X&X&X&X\\S_5&I&X&X&I&I&X&X\\S_6&X&I&X&I&X&I&X\\\hline Z_L&Z&Z&Z&Z&Z&Z&Z\\X_L&X&X&X&X&X&X&X\end{array}$
+> - 5-qubit code : $\begin{array}{c|ccccc}S_1&X&Z&Z&X&I\\S_2&I&X&Z&Z&X\\S_3&X&I&X&Z&Z\\S_4&Z&X&I&X&Z\\\hline Z_L &Z&Z&Z&Z&Z\\X_L&X&X&X&X&X\end{array}$
 
 **Stabilizer subspace dimension** : $2^{n-k}$
 
@@ -670,7 +715,9 @@ can be simulated efficiently on a classical computer
 
 <img src="./README.assets/surface_code.png" alt="img" style="zoom:50%;" />
 
+syndrome
 
+<img src="README.assets/surface_code_syndrome.png" alt="img" style="zoom:40%;" />
 
 # Hamiltonian Simulation
 
