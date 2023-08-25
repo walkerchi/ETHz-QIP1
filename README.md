@@ -23,7 +23,7 @@ $$
 
 
 
-<img src=".note.assets/bloch_sphere.png" alt="img" style="zoom:30%;" />
+<img src="./README.assets/bloch_sphere.png" alt="img" style="zoom:30%;" />
 
 - $z$ axis :  $\ket 0 = \begin{bmatrix}1\\0\end{bmatrix}\quad \ket 1 = \begin{bmatrix}0\\1\end{bmatrix}$
 - $x$ axis : $\ket + = \frac{1}{\sqrt 2}\begin{bmatrix}1\\1\end{bmatrix}\quad \ket - = \frac{1}{\sqrt 2}\begin{bmatrix}1\\-1\end{bmatrix}$
@@ -112,11 +112,11 @@ $H$ rotation about axis $\frac{1}{\sqrt 2}(\hat x +\hat z)$ by $\pi$
 
 - $\text{CNOT} = \ket 0_c\bra 0_c  \otimes \hat I_t + \ket 1_c \bra 1_c \otimes \hat X_t$
 
-  <img src=".note.assets/cnot.png" alt="img" style="zoom:33%;" />
+  <img src="./README.assets/cnot.png" alt="img" style="zoom:33%;" />
 
 - $\text{CPAHSE} = \ket 0_c\bra0_c \otimes \hat I_t + \ket 1_c\bra 1_c\otimes \hat Z_t$
 
-  <img src=".note.assets/cz.png" alt="img" style="zoom:33%;" />
+  <img src="./README.assets/cz.png" alt="img" style="zoom:33%;" />
 
 ## Matrix Table
 
@@ -155,7 +155,7 @@ $H$ rotation about axis $\frac{1}{\sqrt 2}(\hat x +\hat z)$ by $\pi$
 
 - Phase oracle : $U_f\ket x = (-1)^{f(x)}\ket x$
 
-  <img src=".note.assets/phase_oracle.png" alt="img" style="zoom:50%;" />
+  <img src="./README.assets/phase_oracle.png" alt="img" style="zoom:50%;" />
   $$
   \begin{aligned}
   O_f\ket y\ket x  &= \ket {y\oplus f(x)}\ket x\\
@@ -167,7 +167,7 @@ $H$ rotation about axis $\frac{1}{\sqrt 2}(\hat x +\hat z)$ by $\pi$
 
 - Bit oracle : $O_f\ket y\ket x = \ket {y\oplus f(x)}\ket x$
 
-  <img src=".note.assets/bit_oracle.png" alt="img" style="zoom:40%;" />
+  <img src="./README.assets/bit_oracle.png" alt="img" style="zoom:40%;" />
 
 
 $$
@@ -176,7 +176,7 @@ $$
 
 ## Deutsch-Josza
 
-<img src=".note.assets\deutsch-josza.png" alt="img" style="zoom:50%;" />
+<img src="./README.assets\deutsch-josza.png" alt="img" style="zoom:50%;" />
 
 Distinguish $f(x)$ whether is **constant** function or **balanced** function. $\mathcal O(N) \to \mathcal O(1)$
 
@@ -207,7 +207,7 @@ $$
 
 ## Grover
 
-<img src=".note.assets\grover.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets\grover.png" alt="img" style="zoom:40%;" />
 
 find the unique $x_0$ that $f(x_0)=1$, $O(N)\to O(\sqrt N)$
 
@@ -254,7 +254,7 @@ $$
 
 ## [QFT] Quantum  Fourier  transform
 
-<img src=".note.assets\QFT.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets\QFT.png" alt="img" style="zoom:40%;" />
 
 $Q_N \ket x = \frac{1}{\sqrt N}\overset{N-1}{\underset{y=0}{\sum}}e^{2\pi ixy /N}\ket y$ : $\mathcal O(N\text{log}N)\to  \mathcal  O(n^2)$
 $$
@@ -311,7 +311,7 @@ Number of gates in QFT of $n$ bit string
 
 ## Shor  factoring
 
-<img src=".note.assets/shor_factoring.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets/shor_factoring.png" alt="img" style="zoom:40%;" />
 
 given a non-prime integer $N$ represented as a bit string, find a non-trivial factor $a^x\text{mod} ~N$, $a^r\text{mod} N = 1\to(a^{r/2}+1)(a^{r/2}-1) \text{mod} N = 0$
 $$
@@ -428,7 +428,7 @@ def shor_factoring(N):
   0 & \sqrt{1-\gamma}
   \end{bmatrix}$
 
-  <img src=".note.assets/amplitude_dampling.png" alt="img" style="zoom:33%;" />
+  <img src="./README.assets/amplitude_dampling.png" alt="img" style="zoom:33%;" />
 
   - excited state $\ket 1$ damping to $\ket 0$ due to loss of energy
 
@@ -443,7 +443,7 @@ def shor_factoring(N):
   0 & \sqrt{ 1- r}
   \end{bmatrix}$
 
-  <img src=".note.assets/phase_damping.png" alt="img" style="zoom:33%;" />
+  <img src="./README.assets/phase_damping.png" alt="img" style="zoom:33%;" />
 
   - lossing phase information, energy conserved
 
@@ -492,11 +492,11 @@ def shor_factoring(N):
 
 **3-qubit bit-flip code** : $(\alpha\ket 0 + \beta  \ket 1)\otimes \ket 0 \otimes \ket 0 \to \alpha\ket {000}+\beta \ket{111}$
 
-<img src=".note.assets/3-qubit-bit-flip-code.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets/3-qubit-bit-flip-code.png" alt="img" style="zoom:40%;" />
 
 syndrome extraction
 
-<img src=".note.assets/3-qubit-bit-flip-syndrome.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets/3-qubit-bit-flip-syndrome.png" alt="img" style="zoom:40%;" />
 
 - no error
   $$
@@ -516,11 +516,11 @@ syndrome extraction
 
 **3-qubit phase-flip code** : $(\alpha\ket 0 + \beta\ket 1)\otimes \ket 0 \otimes \ket 0 \to  \alpha\ket{+++}+\beta\ket{---}$
 
-<img src=".note.assets/3-qubit-phase-flip-code.png" alt="img" style="zoom:45%;" />
+<img src="./README.assets/3-qubit-phase-flip-code.png" alt="img" style="zoom:45%;" />
 
 syndrome extraction
 
-<img src=".note.assets/3-qubit-phase-flip-syndrome.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets/3-qubit-phase-flip-syndrome.png" alt="img" style="zoom:40%;" />
 $$
 \ket +\ket +\overset{\text{CNOT}}{\to}\ket +\ket+
 \\
@@ -542,7 +542,7 @@ $$
 
 **Shor 9-qubit concatenated code** : $\alpha\ket 0_L+\beta\ket 1_L= \alpha(\ket{111}+\ket{000})^{\otimes 3}+\beta(\ket{111}-\ket{000})^{\otimes 3}$
 
-<img src=".note.assets/9-qubit-concatenated-code.png" alt="img" style="zoom:40%;" />
+<img src="./README.assets/9-qubit-concatenated-code.png" alt="img" style="zoom:40%;" />
 
 syndrome
 
@@ -668,7 +668,7 @@ can be simulated efficiently on a classical computer
 
 ## surface code
 
-<img src=".note.assets/surface_code.png" alt="img" style="zoom:50%;" />
+<img src="./README.assets/surface_code.png" alt="img" style="zoom:50%;" />
 
 
 
